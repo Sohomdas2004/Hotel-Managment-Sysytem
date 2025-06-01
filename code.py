@@ -115,14 +115,15 @@ def take_order():
     
 # Function to delete an order
 def delete_order():
-    iteam = input("Enter your order to remove: ")
-    if iteam in order_list:
-        index = order_list.index(iteam)
+    item = input("Enter your order to remove: ").strip()
+    if item in order_list:
+        index = order_list.index(item)
         removed_price = price.pop(index)
-        order_list.remove(iteam)
-        print(f"Removed {iteam} - Rs. {removed_price}")
+        order_list.pop(index)  # Ensures both lists stay in sync
+        print(f"Removed '{item}' - Rs. {removed_price}")
     else:
-        print("Item not found in your order list, please check the spelling.")
+        print("Item not found in your order list. Please check the spelling.") #Some changes
+
 
 # Function to show the ordered items
 def show():
